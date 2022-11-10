@@ -8,6 +8,7 @@ CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -framework OpenGL -framework AppKit
 LIBFT = ./libft/libft.a
 MLX = ./mlx/libmlx.a
+MAIN = main.c
 SRC = 
 
 OBJS = $(SRC:.c=.o)
@@ -21,7 +22,7 @@ make_mlx:
 	@make all -C ./mlx
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) main.c -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) $(MAIN) -o $(NAME)
 
 %.o: %.c $(HEADER) $(LIBFT) $(MLX)
 	$(CC) $(CFLAGS) $< -c

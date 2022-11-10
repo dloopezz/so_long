@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "mlx.h": "c",
+        "__config": "c"
+    }
+}

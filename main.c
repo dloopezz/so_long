@@ -25,11 +25,11 @@ int	main(void)
 	int		j = 0;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 2560, 1440, "so_long");
-	img.img = mlx_new_image(mlx, 1920, 1080);
+	mlx_win = mlx_new_window(mlx, 900, 600, "so_long");
+	img.img = mlx_new_image(mlx, 900, 600);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-
+	//pixelput
 	while(i<400)
 		i++;
 	while(i<500)
@@ -144,7 +144,7 @@ int	main(void)
 
 
 	/* 
-	octogone
+	octogono
 
 	while(i<400)
 		i++;
