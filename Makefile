@@ -21,7 +21,7 @@ make_libft:
 make_mlx:
 	@make all -C ./mlx
 
-$(NAME): $(OBJ)
+$(NAME): $(MAIN) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) $(MAIN) -o $(NAME)
 
 %.o: %.c $(HEADER) $(LIBFT) $(MLX)
