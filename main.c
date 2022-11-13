@@ -7,24 +7,14 @@
 # define KEY_S			1
 # define KEY_D			2
 
-typedef struct	s_vars 
-{
+typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
 }				t_vars;
 
-/* int key_press(int keycode, t_vars *vars)
+int	key_hook(int keycode)
 {
-	if (keycode == KEY_ESC)
-		mlx_destroy_window(vars->mlx, vars->win);
-	if (keycode == KEY_W)
-		mlx_string_put(vars->mlx, vars->win, 12, 12, 16711680, "Hello world");
-	return (0);
-} */
-
-int detect_mouse(t_vars *vars)
-{
-	mlx_string_put(vars->mlx, vars->win, 12, 12, 16711680, "Hello world");
+    printf("Keycode: %i\n", keycode);
 	return (0);
 }
 
@@ -34,6 +24,6 @@ int	main(void)
 
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 900, 600, "so_long");
-	mlx_hook(vars.win, 7, 1L<<4, detect_mouse, &vars);
+	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_loop(vars.mlx);
 }
