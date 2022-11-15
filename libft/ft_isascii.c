@@ -3,33 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 13:01:59 by dlopez-s          #+#    #+#             */
-/*   Updated: 2022/09/14 17:53:46 by dlopez-s         ###   ########.fr       */
+/*   Created: 2022/09/15 13:50:10 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/15 13:56:43 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 int	ft_isascii(int c)
 {
-	return (0 <= c && c <= 127);
-}
-
-/*
-#include <stdio.h>
-#include <ctype.h>
-
-int main()
-{
-	char c = 'a';
-	
-	if (ft_isascii(c) != '\0')
-		printf("%d", ft_isascii(c));
+	if (c >= 0 && c <= 127)
+		return (1);
 	else
-		printf("%d", ft_isascii(c));
-	return 0;
+		return (0);
 }
-
-*/
+/*int	main()
+{
+	int	c = 128;
+	printf("%d", ft_isascii(c));
+}*/

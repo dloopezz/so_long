@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 17:15:12 by dlopez-s          #+#    #+#             */
-/*   Updated: 2022/10/12 16:29:00 by dlopez-s         ###   ########.fr       */
+/*   Created: 2022/09/29 14:47:32 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/29 14:47:34 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putchar(char c)
+t_list	*ft_lstlast(t_list *lst)
 {
-	return (write(1, &c, 1));
+	if (lst)
+	{
+		while (lst->next)
+			lst = lst->next;
+		return (lst);
+	}
+	return (0);
 }

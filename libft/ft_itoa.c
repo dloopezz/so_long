@@ -3,66 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 21:41:57 by lopezz            #+#    #+#             */
-/*   Updated: 2022/09/30 12:34:18 by lopezz           ###   ########.fr       */
+/*   Created: 2022/09/21 16:53:39 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/21 16:53:54 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_cont(int n)
+static size_t	ft_len(int nb)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	if (n <= 0)
-		i++;
-	while (n)
+	len = 0;
+	if (nb <= 0)
+		len++;
+	while (nb)
 	{
-		n = n / 10;
-		i++;
+		len++;
+		nb = nb / 10;
 	}
-	return (i);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		len;
-	long	nb;
+	int			len;
+	char		*str;
+	long int	i;
 
-	len = ft_cont(n);
-	nb = n;
+	len = ft_len(n);
+	i = n;
 	str = malloc(sizeof(char) * len + 1);
-	if (str == 0)
-		return (NULL);
-	if (nb < 0)
+	if (!(str))
+		return (0);
+	if (i < 0)
 	{
 		str[0] = '-';
-		nb = -nb;
+		i = -i;
 	}
-	if (nb == 0)
+	if (i == 0)
 		str[0] = '0';
-	str[len] = '\0';
-	len--;
-	while (nb)
+	str[len--] = '\0';
+	while (i)
 	{
-		str[len] = (nb % 10) + '0';
-		nb = nb / 10;
+		str[len] = i % 10 + '0';
 		len--;
+		i = i / 10;
 	}
 	return (str);
 }
-
-/* 
-#include <stdio.h>
-
-int main()
-{
-	int n = 125;
-	printf("%zu\n", ft_cont(n));
-	printf("%s", ft_itoa(n));
-}
- */

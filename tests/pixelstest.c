@@ -30,52 +30,6 @@ int	main(void)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
 	//pixelput
-	while(i<400)
-		i++;
-	while(i<500)
-	{
-		my_mlx_pixel_put(&img, i, 0, 0x0000FF);
-		i++;
-	}
-	while(j < 100)
-	{
-		my_mlx_pixel_put(&img, i, j, 0xffff00);
-		i++;
-		j++;
-	}
-	while(j < 200)
-	{
-		my_mlx_pixel_put(&img, i, j, 0x00FF0000);
-		j++;
-	}
-	while(j < 300)
-	{
-		my_mlx_pixel_put(&img, i, j, 0x800080);
-		j++;
-		i--;
-	}
-	while(i > 400)
-	{
-		my_mlx_pixel_put(&img, i, j, 0x0000FF);
-		i--;
-	}
-	while(j > 200)
-	{
-		my_mlx_pixel_put(&img, i, j, 0xffff00);
-		i--;
-		j--;
-	}
-	while(j > 100)
-	{
-		my_mlx_pixel_put(&img, i, j, 0x00FF0000);
-		j--;
-	}
-	while(j > -1)
-	{
-		my_mlx_pixel_put(&img, i, j, 0x800080);
-		j--;
-		i++;
-	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }

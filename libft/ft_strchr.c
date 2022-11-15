@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 21:01:46 by lopezz            #+#    #+#             */
-/*   Updated: 2022/10/22 19:06:32 by dlopez-s         ###   ########.fr       */
+/*   Created: 2022/09/19 12:24:46 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/27 15:51:34 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,13 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
+	while (*s)
 	{
-		if (s[i] == (char) c)
-			return ((char *)s + i);
-		i++;
+		if (*s == (char)c)
+			return ((char *) s);
+		s++;
 	}
-	if ((char) c == '\0')
-		return ((char *)s + i);
+	if ((char)c == '\0')
+		return ((char *) s);
 	return (0);
 }
-
-/* #include <stdio.h>
-#include <string.h>
-
-int main()
-{
-	char s[] = "hello world\n";
-	printf("%s", ft_strchr(s, 'w'));
-	return (0);
-}
- */

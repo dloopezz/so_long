@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 18:34:32 by dlopez-s          #+#    #+#             */
-/*   Updated: 2022/10/18 15:48:28 by dlopez-s         ###   ########.fr       */
+/*   Created: 2022/09/28 17:20:46 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/28 18:38:46 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_puthex(unsigned int nbr, char *base)
+t_list	*ft_lstnew(void *content)
 {
-	int	nb_tab[100];
-	int	i;
-	int	hex;
+	t_list	*new;
 
-	hex = 0;
-	i = 0;
-	if (nbr == 0)
-		hex += ft_putchar('0');
-	while (nbr)
+	new = malloc(sizeof(t_list) * 1);
+	if (new)
 	{
-		nb_tab[i] = nbr % 16;
-		nbr = nbr / 16;
-		i++;
+		new -> content = content;
+		new -> next = NULL;
+		return (new);
 	}
-	while (--i >= 0)
-		hex += ft_putchar(base[nb_tab[i]]);
-	return (hex);
+	return (NULL);
 }

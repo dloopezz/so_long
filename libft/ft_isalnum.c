@@ -3,32 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 12:42:35 by dlopez-s          #+#    #+#             */
-/*   Updated: 2022/10/01 12:12:02 by dlopez-s         ###   ########.fr       */
+/*   Created: 2022/09/14 17:33:57 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/14 17:40:46 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <stdio.h>
 #include "libft.h"
 
 int	ft_isalnum(int c)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
-}
-
-/* 
-#include <stdio.h>
-#include <ctype.h>
-
-int main()
-{
-	char c = 'o';
-	
-	if (ft_isalnum(c) != '\0')
-		printf("%d", isalnum(c));
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	else if (c >= '0' && c <= '9')
+		return (1);
 	else
-		printf("%d", isalnum(c));
-	return 0;
+		return (0);
 }
- */
+/*int	main()
+{
+	int	c = ',';
+	printf("%d", ft_isalnum(c));
+}*/

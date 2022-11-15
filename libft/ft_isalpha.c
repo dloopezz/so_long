@@ -3,32 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 12:10:30 by dlopez-s          #+#    #+#             */
-/*   Updated: 2022/09/15 14:02:16 by dlopez-s         ###   ########.fr       */
+/*   Created: 2022/09/14 16:41:56 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/14 17:32:48 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <stdio.h>
 #include "libft.h"
 
 int	ft_isalpha(int c)
 {
-	return (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z'));
-}
-
-/*
-#include <stdio.h>
-#include <ctype.h>
-
-int main()
-{
-	char c = 't';
-	
-	if (ft_isalpha(c) != '\0')
-		printf("%d", ft_isalpha(c));
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
 	else
-		printf("%d", ft_isalpha(c));
-	return 0;
+		return (0);
 }
-*/
+/*int	main()
+{
+	int	c = '1';
+	printf("%d", ft_isalpha(c));
+}*/

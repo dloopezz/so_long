@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 17:15:34 by dlopez-s          #+#    #+#             */
-/*   Updated: 2022/10/02 20:19:15 by lopezz           ###   ########.fr       */
+/*   Created: 2022/09/28 18:25:11 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/30 14:23:58 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!new)
-		return ;
-	if (!*lst)
+	if (new && lst)
 	{
+		new -> next = *lst;
 		*lst = new;
-		return ;
 	}
-	ft_lstlast (*lst)-> next = new;
 }

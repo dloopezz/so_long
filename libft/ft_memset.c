@@ -3,38 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 13:43:12 by dlopez-s          #+#    #+#             */
-/*   Updated: 2022/09/27 18:48:09 by dlopez-s         ###   ########.fr       */
+/*   Created: 2022/09/15 16:30:46 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/15 17:06:46 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t n)
 {
 	size_t			i;
+	unsigned char	*str;
 
 	i = 0;
-	while (i < len)
+	str = b;
+	while (i < n)
 	{
-		((char *)b)[i] = (unsigned char)c;
+		str[i] = (unsigned char) c;
 		i++;
 	}
 	return (b);
 }
-
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main()
+/*int	main()
 {
-	char str[] = "Hola que tal";
-	
-	ft_memset(str + 5, '.', 3);
-	printf("%s", str);
-	return (0);
-}
-*/
+	int	n = 5;
+	char	str[] = "42 madrid es una secta en la que te gustará entrar";
+	ft_memset(str + 5, '.', n*sizeof(char));
+	printf ("%s", str);
+}*/

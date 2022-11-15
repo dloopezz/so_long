@@ -3,100 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 15:51:17 by dlopez-s          #+#    #+#             */
-/*   Updated: 2022/10/01 13:58:35 by dlopez-s         ###   ########.fr       */
+/*   Created: 2022/09/27 13:31:17 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/30 12:52:31 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_cont(const char *str, char c)
+static int	get_nwords(char const *s, char c)
 {
-	int	i;
-	int	n_words;
-	int	flag;
+	int	nwords;
 
-	i = 0;
-	n_words = 0;
-	flag = 0;
-	while (str[i] != '\0')
+	nwords = 0;
+	if (!*s)
+		return (0);
+	while (*s)
 	{
-		if (str[i] != c && flag == 0)
+		if (*s == c)
 		{
-			flag = 1;
-			n_words++;
+			nwords++;
+			while (*s == c)
+				s++;
 		}
-		else if (str[i] == c)
-			flag = 0;
-		i++;
+		else
+			s++;
 	}
-	return (n_words);
+	nwords++;
+	return (nwords);
 }
 
-static char	**ft_freemem(char **matrix)
+static void	*freemmory(char **memry, size_t aux)
 {
 	size_t	i;
 
 	i = 0;
-	while (matrix[i])
+	while (i < aux)
 	{
-		free(matrix[i]);
+		free(memry[i]);
 		i++;
 	}
-	free(matrix);
+	free(memry);
 	return (NULL);
 }
 
-char	**ft_split(const char *s, char c)
+static void	save_words(char **ptr, char *str, char c, int nwords)
 {
-	char	**words;
-	size_t	i;
-	int		j;
-	int		n_words;
+	int		i;
+	char	*aux;
 
-	n_words = ft_cont(s, c);
-	words = ft_calloc(n_words + 1, sizeof (char *));
-	if (!words || !s)
-		return (0);
 	i = 0;
-	j = 0;
-	while (j < n_words)
+	if ((nwords > 0) && *str)
 	{
-		i = 0;
-		while (*s == c)
-			s++;
-		while (s[i] != c && s[i])
-			i++;
-		words[j] = ft_substr(s, 0, i);
-		s = s + i;
-		if (words[j++] == 0)
-			return (ft_freemem(words));
+		while (i < (nwords - 1))
+		{
+			aux = ft_strchr(str, c);
+			ptr[i++] = ft_substr(str, 0, aux - str);
+			if (ptr == 0)
+			{
+				freemmory(ptr, i);
+				return ;
+			}
+			while (*aux == c)
+				aux++;
+			str = aux;
+		}
+		ptr[i++] = ft_strdup(str);
+		ptr[i] = 0;
 	}
-	return (words);
 }
 
-/*
-//1. hacer contador de palabras
-//2. funcion para escribir cada palabra nueva (con malloc)
-//3. split
-
- #include <stdio.h>
-
-int	main(void)
+char	**ft_split(char const *s, char c)
 {
-	char	**tab;
-	unsigned int	i;
+	int		nwords;
+	char	**ptr;
+	char	*str;
+	char	a[2];
 
-	i = 0;
-	tab = ft_split("viva er beti", ' ');
-	if (!tab[0])
-		ft_putendl_fd("ok\n", 1);
-	while (tab[i] != NULL)
+	a[0] = c;
+	a[1] = '\0';
+	if (s)
 	{
-		ft_putendl_fd(tab[i], 1);
-		i++;
+		str = ft_strtrim(s, a);
+		if (str)
+		{
+			nwords = get_nwords(str, c);
+			ptr = ft_calloc((nwords + 1), sizeof(char *));
+			if (ptr)
+				save_words(ptr, str, c, nwords);
+			free(str);
+			return (ptr);
+		}
 	}
-} 
-*/
+	return (0);
+}

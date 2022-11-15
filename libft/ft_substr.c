@@ -3,40 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 00:34:49 by lopezz            #+#    #+#             */
-/*   Updated: 2022/09/29 19:52:45 by lopezz           ###   ########.fr       */
+/*   Created: 2022/09/20 14:55:24 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/09/27 18:24:12 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void	error_handling(char *str, char const *s, size_t start, size_t len)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (i >= start && j < len)
+		{
+			str[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	str[j] = 0;
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*ptr;
-	size_t	sub_len;
+	char	*str;
+	size_t	leng;
 
 	if (s == 0)
 		return (NULL);
-	if (start > (unsigned int)ft_strlen(s))
+	if ((unsigned int)ft_strlen(s) < start)
 		return (ft_strdup(""));
-	sub_len = ft_strlen(s + start);
-	if (sub_len < len)
-		len = sub_len;
-	ptr = (char *)malloc((len + 1) * sizeof(char));
-	if (ptr == 0)
+	leng = ft_strlen(start + s);
+	if (leng < len)
+		len = leng;
+	str = (char *)malloc(sizeof(*s) * (len + 1));
+	if (!str)
 		return (NULL);
-	ft_strlcpy(ptr, s + start, len + 1);
-	return (ptr);
+	error_handling(str, s, (size_t)start, len);
+	return (str);
 }
-
-/* 
-#include <stdio.h>
-
-int main()
-{
-	char str[] = "lorem ipsum dolor sit amet";
-	printf("%s", ft_substr(str, 4, 20));
-}
- */

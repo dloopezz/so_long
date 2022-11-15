@@ -3,48 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 21:51:50 by lopezz            #+#    #+#             */
-/*   Updated: 2022/10/02 20:20:19 by lopezz           ###   ########.fr       */
+/*   Created: 2022/09/20 14:33:00 by cyacoub-          #+#    #+#             */
+/*   Updated: 2022/10/24 17:11:49 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+static char	*ft_strcpy(char *dst, const char *src)
 {
-	char	*p;
-	int		len;
-	size_t	i;
+	int	i;
 
-	len = ft_strlen((char *)s1) + 1;
-	p = (char *)malloc (len * sizeof(char));
-	if (p == 0)
-		return (NULL);
 	i = 0;
-	while (s1[i] != '\0')
+	while (src[i])
 	{
-		p[i] = s1[i];
+		dst[i] = src [i];
 		i++;
 	}
-	p[i] = '\0';
-	return (p);
+	dst[i] = '\0';
+	return (dst);
 }
 
-/*
-#include <string.h>
-#include <stdio.h>
-
-int main()
+char	*ft_strdup(const char *s)
 {
-	char str1[] = "lorem ipsum dolor sit amet";
-	char str2[] = "lorem ipsum dolor sit amet";
+	char	*c;
 
-	ft_strdup(str1);
-	printf("%s\n", str1);
-	strdup(str2);
-	printf("%s", str2);
-	return (0);
+	c = (char *)malloc(sizeof(char) * ft_strlen((char *)s) + 1);
+	if (c == NULL)
+		return (NULL);
+	return (ft_strcpy(c, s));
 }
-*/
