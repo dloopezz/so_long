@@ -22,14 +22,15 @@ typedef struct	s_vars
 	return (0);
 } */
 
-int mouse_in(int button, int x, int y, t_vars *vars)
+int mouse_in(t_vars *vars)
 {
-	if (button == 1)
-	{
-		x = 15;
-		y = 15;
-		mlx_string_put(vars->mlx, vars->win, x, y, 16711680, "Hello");
-	}
+	mlx_string_put(vars->mlx, vars->win, 15, 15, 16711680, "Hello");
+	return (0);
+}
+
+int mouse_out(t_vars *vars)
+{
+	mlx_string_put(vars->mlx, vars->win, 30, 30, 16711680, "Hello");
 	return (0);
 }
 
@@ -39,6 +40,7 @@ int	main(void)
 
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 900, 600, "so_long");
-	mlx_hook(vars.win, 4, 1L<<4, mouse_in, &vars);
+	mlx_hook(vars.win, 9, 1L<<4, mouse_in, &vars);
+	mlx_hook(vars.win, 10, 1L<<5, mouse_out, &vars);
 	mlx_loop(vars.mlx);
 }
