@@ -15,8 +15,6 @@ typedef struct	s_vars
 
 /* int key_press(int keycode, t_vars *vars)
 {
-	if (keycode == KEY_ESC)
-		mlx_destroy_window(vars->mlx, vars->win);
 	if (keycode == KEY_W)
 		mlx_string_put(vars->mlx, vars->win, 12, 12, 16711680, "Hello world");
 	return (0);
