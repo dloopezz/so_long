@@ -3,6 +3,7 @@
         "mlx.h": "c",
         "__config": "c",
         "stdlib.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "stdio.h": "c"
     }
 }
