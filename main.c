@@ -7,18 +7,16 @@
 # define KEY_A			0
 # define KEY_S			1
 # define KEY_D			2
+# define PLAYER			80
+
 
 typedef struct	s_vars 
 {
 	void	*mlx;
 	void	*win;
+	int		player_pos_x;
+	int		player_pos_y;
 }				t_vars;
-
-typedef struct s_param
-{
-	int x;
-	int y;
-}				t_param;
 
 typedef struct i_param
 {
@@ -26,44 +24,47 @@ typedef struct i_param
 	int		img_height;
 	void	*map_img;
 	void	*player_img;
+
 }				i_param;
 
-void	init_params(t_param *param)
+int		move_player(int keycode, t_vars *mlx)
 {
-	param->x = 450;
-	param->y = 337;
-}
+	if (keycode == KEY_ESC)
+	{
+		mlx_destroy_window(mlx->mlx, mlx->win);
+		exit(0);
+	}
 
-int		move_player(int keycode, t_vars mlx, t_param *param, i_param img)  //puta mierda
-{
+	i_param img;
+
+	img.map_img = mlx_xpm_file_to_image(mlx->mlx, "./xpm/mapa.xpm", &img.img_width, &img.img_height);
+    mlx_put_image_to_window(mlx->mlx, mlx->win, img.map_img, 1, 1);
+
+	img.player_img = mlx_xpm_file_to_image(mlx->mlx, "./xpm/player.xpm", &img.img_width, &img.img_height);
+	//mlx_put_image_to_window(mlx->mlx, mlx->win, img.player_img, 450, 337);
 	if (keycode == KEY_W)
 	{
-		mlx_destroy_image(mlx.mlx, &img.player_img);
-		param -> y++;
-		mlx_put_image_to_window(mlx.mlx, mlx.win, img.player_img, param -> x, param -> y);
+		// mlx_put_image_to_window(mlx->mlx, mlx->win, img.map_img, mlx->player_pos_x, mlx->player_pos_y);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, img.player_img, mlx->player_pos_x, mlx->player_pos_y - PLAYER);
+		mlx->player_pos_y -= PLAYER;
 	}
 	if (keycode == KEY_A)
 	{
-		mlx_destroy_image(mlx.mlx, &img.player_img);
-		param -> x--;
-		mlx_put_image_to_window(mlx.mlx, mlx.win, img.player_img, param -> x, param -> y);
+		// mlx_put_image_to_window(mlx->mlx, mlx->win, img.map_img, mlx->player_pos_x, mlx->player_pos_y);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, img.player_img, mlx->player_pos_x  - PLAYER, mlx->player_pos_y);
+		mlx->player_pos_x -= PLAYER;
 	}
 	if (keycode == KEY_S)
 	{
-		mlx_destroy_image(mlx.mlx, &img.player_img);
-		param -> y--;
-		mlx_put_image_to_window(mlx.mlx, mlx.win, img.player_img, param -> x, param -> y);
+		// mlx_put_image_to_window(mlx->mlx, mlx->win, img.map_img, mlx->player_pos_x, mlx->player_pos_y);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, img.player_img, mlx->player_pos_x, mlx->player_pos_y + PLAYER);
+		mlx->player_pos_y += PLAYER;
 	}
 	if (keycode == KEY_D)
 	{
-		mlx_destroy_image(mlx.mlx, &img.player_img);
-		param -> x++;
-		mlx_put_image_to_window(mlx.mlx, mlx.win, img.player_img, param -> x, param -> y);
-	}
-	if (keycode == KEY_ESC)
-	{
-		mlx_destroy_image(mlx.mlx, &img.player_img);
-		exit(0);
+		// mlx_put_image_to_window(mlx->mlx, mlx->win, img.map_img, mlx->player_pos_x, mlx->player_pos_y);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, img.player_img, mlx->player_pos_x + PLAYER, mlx->player_pos_y);
+		mlx->player_pos_x += PLAYER;
 	}
 	return (0);
 }
@@ -71,18 +72,20 @@ int		move_player(int keycode, t_vars mlx, t_param *param, i_param img)  //puta m
 int	main(void)
 {
 	t_vars	mlx;
-	t_param	param;
 	i_param img;
+	mlx.player_pos_x  = 1;
+	mlx.player_pos_y  = 1;
 
 	mlx.mlx = mlx_init();
-    mlx.win = mlx_new_window(mlx.mlx, 900, 674, "so_long");
+    mlx.win = mlx_new_window(mlx.mlx, 800, 640, "so_long");
+
 	img.map_img = mlx_xpm_file_to_image(mlx.mlx, "./xpm/mapa.xpm", &img.img_width, &img.img_height);
-    mlx_put_image_to_window(mlx.mlx, mlx.win, img.map_img, 1, 1);
-	img.player_img = mlx_xpm_file_to_image(mlx.mlx, "./xpm/player.xpm", &img.img_width, &img.img_height);
-	//init_params(&param);
-	//mlx_put_image_to_window(mlx.mlx, mlx.win, img.player_img, param.x, param.y);
-	mlx_put_image_to_window(mlx.mlx, mlx.win, img.player_img, 450, 337);
-	mlx_key_hook(mlx.win, move_player, &param);
+    mlx_put_image_to_window(mlx.mlx, mlx.win, img.map_img, 0, 0);
+
+	/* img.player_img = mlx_xpm_file_to_image(mlx.mlx, "./xpm/player.xpm", &mlx.player_pos_x, &mlx.player_pos_y);
+	mlx_put_image_to_window(mlx.mlx, mlx.win, img.player_img, 450, 337); */
+
+	mlx_key_hook(mlx.win, move_player, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }
