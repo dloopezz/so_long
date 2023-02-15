@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:42 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/15 20:24:35 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/15 23:31:15 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void    read_map(t_game *game, char *file)
 		game->map.line = ft_strjoin_no_nl(game->map.line, line);
 		game->map.height++;
 	}
-	//free (line);
 	close(fd);
 	//ft_putstr_fd(game->map.line, 1);
 	map_to_2d(game);

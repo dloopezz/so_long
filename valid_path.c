@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 20:07:51 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/15 20:22:38 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/15 23:36:24 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,29 @@ static int complete_path(t_game *game)
     return (0);
 }
 
+static int check_collect(t_game *game)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while(i < game->map.height)
+    {
+        j = 0;
+        while (j < game->map.width)
+        {
+            if (game->map.mtx_cpy[i][j] == 'C')
+            {
+                ft_putstr_fd("No collect", 1);
+                exit(1);
+            }
+            j++;
+        }
+        i++;
+    }
+    return (1);
+}
+
 int valid_path(t_game *game)
 {
     int i;
@@ -81,7 +104,8 @@ int valid_path(t_game *game)
         }
         i++;
     }
-    if (complete_path(game))
+    
+    if (check_collect(game) && complete_path(game))
         return (1);
     return (0);
 }

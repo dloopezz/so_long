@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_collect.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 20:31:21 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/15 20:35:56 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/15 23:19:30 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+/* #include "so_long.h"
 
 static int check_cur(t_game *game, int i, int j)
 {
@@ -84,4 +84,4 @@ int valid_collect(t_game *game)
     if (complete_path(game))
         return (1);
     return (0);
-}
+} */
