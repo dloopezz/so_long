@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:50 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/15 20:21:11 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/15 20:36:26 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void	write_map_s(t_game *game);
 void	write_map_d(t_game *game);
 int map_to_2d(t_game *game);
 int valid_path(t_game *game);
+int valid_collect(t_game *game);
 
 
 

@@ -6,7 +6,7 @@
 #    By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 13:51:55 by cyacoub-          #+#    #+#              #
-#    Updated: 2023/02/15 20:26:31 by dlopez-s         ###   ########.fr        #
+#    Updated: 2023/02/15 20:36:42 by dlopez-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = 	controls.c \
 		errors.c \
 		write_map.c \
 		valid_path.c \
+		valid_collect.c \
 		map_copies.c
 
 OBJS = $(SRC:.c=.o)

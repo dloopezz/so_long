@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:36 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/15 20:27:43 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/15 20:30:59 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,5 @@ void check_map(t_game *game)
 	check_format(game->map.line, game);
 	check_walls(game->map.line, game);
 	valid_path(game);
-	// valid_colect(game);
+	valid_collect(game);
 }
