@@ -6,15 +6,15 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:50 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/16 17:32:38 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/16 20:09:25 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "mlx/mlx.h"
-# include "libft/libft.h"
+# include "../mlx/mlx.h"
+# include "../libft/libft.h"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -26,17 +26,16 @@
 # define KEY_A			0
 # define KEY_S			1
 # define KEY_D			2
-# define ARROW_UP			126
+# define ARROW_UP		126
 # define ARROW_DOWN		125
 # define ARROW_LEFT		123
-# define ARROW_RIGHT		124
+# define ARROW_RIGHT	124
 
 //EVENT CODES
-# define DESTROY_NOTIFY		17
+# define DESTROY_NOTIFY	7
 
 //GAME MACROS
 # define PLAYER			110
-# define EXIT_ERROR		1
 # define XPM_ROUTE		"./xpm/"
 
 //STRUCTS USED IN  THE GAME
@@ -70,7 +69,6 @@ typedef struct s_map
 	char	**cpy;
 	int		height;
 	int		width;
-	void	*map_img;
 	void	*cell;
 	void	*box;
 	void	*potion;
@@ -92,20 +90,20 @@ typedef struct s_game
 	t_map		map;
 }				t_game;
 
-int		key_hooks(int keycode, t_game *game);
-int		red_cross(t_game *game);
+void	*init_xpm(t_game *game, char *str);
 void	all_xpm(t_game *game);
-void	print_steps(t_game *game);
+void	put_img(t_game *game, void *img_ptr, int j, int i);
 void	read_map(t_game *game, char *file);
 void	check_map(t_game *game);
 int		valid_path(t_game *game);
+int		key_hooks(int keycode, t_game *game);
+int		red_cross(t_game *game);
 void	write_map(t_game *game, char c);
 void	put_player(t_game *game, int i, int j, char c);
-void	*init_xpm(t_game *game, char *str);
-void	error_found(char *str);
+void	print_steps(t_game *game);
 void	win_game(t_game *game);
 void	lose_game(t_game *game);
-void	put_img(t_game *game, void *img_ptr, int j, int i);
+void	error_found(char *str);
 
 //===SETTINGS 	COLORS===/
 //===Color font code===/

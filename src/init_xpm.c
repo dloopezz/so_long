@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:39 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/16 17:20:47 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/16 20:06:27 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void	*init_xpm(t_game *game, char *str)
 	img = mlx_xpm_file_to_image(game->mlx, route,
 			&game->img_width, &game->img_height);
 	if (!img)
-	{
-		ft_putstr_fd(RED"Failed to load XPM files"RESET, 1);
-		exit(EXIT_ERROR);
-	}
+		error_found("Failed to load XPM files");
 	free(route);
 	return (img);
 }
