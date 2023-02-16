@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:39 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/16 16:14:57 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:20:47 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,9 @@ void	all_xpm(t_game *game)
 {
 	player_xpm(game);
 	map_xpm(game);
+}
+
+void	put_img(t_game *game, void *img_ptr, int j, int i)
+{
+	mlx_put_image_to_window(game->mlx, game->win, img_ptr, j, i);
 }

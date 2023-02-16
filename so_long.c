@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:44 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/16 16:26:45 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:41:15 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	init_game(t_game *game, char *file)
 	game->player.pos = 2;
 	game->player.steps = 0;
 	game->map.n_potion = 0;
-	//player.steps_flag = 1;
 	read_map(game, file);
 	game->mlx = mlx_init();
 	if (!(game->mlx))
@@ -39,13 +38,14 @@ static void	init_game(t_game *game, char *file)
 			game->map.height * 110, "Save Morty!");
 	all_xpm(game);
 	write_map(game, 's');
-	mlx_put_image_to_window(game->mlx, game->win, game->map.footprints, 10, 10);
+	put_img(game, game->map.footprints, 10, 10);
 }
 
-/* void    ft_leaks()
+/* void	ft_leaks()
 {
 	system("leaks so_long");
-} */
+}
+*/
 
 int	main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:42 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/16 16:28:25 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:33:05 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ static void	copy_map(t_game *game)
 
 	i = 0;
 	k = 0;
-	game->map.mtx_cpy = ft_calloc(game->map.height + 1, sizeof(char *));
-	if (!game->map.mtx_cpy)
+	game->map.cpy = ft_calloc(game->map.height + 1, sizeof(char *));
+	if (!game->map.cpy)
 		return ;
 	while (i < game->map.height)
 	{
-		game->map.mtx_cpy[i] = ft_calloc(game->map.width + 1, sizeof(char));
-		if (!game->map.mtx_cpy[i])
+		game->map.cpy[i] = ft_calloc(game->map.width + 1, sizeof(char));
+		if (!game->map.cpy[i])
 			return ;
 		j = 0;
 		while (j < game->map.width)
 		{
-			game->map.mtx_cpy[i][j++] = game->map.line[k++];
+			game->map.cpy[i][j++] = game->map.line[k++];
 		}
 		i++;
 	}

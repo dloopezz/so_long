@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:00:48 by lopezz            #+#    #+#             */
-/*   Updated: 2023/02/16 16:23:05 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:30:46 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,49 @@
 static void	put_morty2(t_game *game, int i, int j, char c)
 {
 	if (c == 'w')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.human_back, j * 110, i * 110);
+		put_img(game, game->player.human_back, j * 110, i * 110);
 	else if (c == 'a')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.human_left, j * 110, i * 110);
+		put_img(game, game->player.human_left, j * 110, i * 110);
 	else if (c == 's')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.human_front, j * 110, i * 110);
+		put_img(game, game->player.human_front, j * 110, i * 110);
 	else if (c == 'd')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.human_right, j * 110, i * 110);
+		put_img(game, game->player.human_right, j * 110, i * 110);
 }
 
 static void	put_morty1(t_game *game, int i, int j, char c)
 {
 	if (c == 'w')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.human_back1, j * 110, i * 110);
+		put_img(game, game->player.human_back1, j * 110, i * 110);
 	else if (c == 'a')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.human_left1, j * 110, i * 110);
+		put_img(game, game->player.human_left1, j * 110, i * 110);
 	else if (c == 's')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.human_front1, j * 110, i * 110);
+		put_img(game, game->player.human_front1, j * 110, i * 110);
 	else if (c == 'd')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.human_right1, j * 110, i * 110);
+		put_img(game, game->player.human_right1, j * 110, i * 110);
 }
 
 static void	put_skeleton2(t_game *game, int i, int j, char c)
 {
 	if (c == 'w')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.player_back, j * 110, i * 110);
+		put_img(game, game->player.player_back, j * 110, i * 110);
 	else if (c == 'a')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.player_left, j * 110, i * 110);
+		put_img(game, game->player.player_left, j * 110, i * 110);
 	else if (c == 's')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.player_front, j * 110, i * 110);
+		put_img(game, game->player.player_front, j * 110, i * 110);
 	else if (c == 'd')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.player_right, j * 110, i * 110);
+		put_img(game, game->player.player_right, j * 110, i * 110);
 }
 
 static void	put_skeleton1(t_game *game, int i, int j, char c)
 {
 	if (c == 'w')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.player_back1, j * 110, i * 110);
+		put_img(game, game->player.player_back1, j * 110, i * 110);
 	else if (c == 'a')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.player_left1, j * 110, i * 110);
+		put_img(game, game->player.player_left1, j * 110, i * 110);
 	else if (c == 's')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.player_front1, j * 110, i * 110);
+		put_img(game, game->player.player_front1, j * 110, i * 110);
 	else if (c == 'd')
-		mlx_put_image_to_window(game->mlx, game->win, game->player.player_right1, j * 110, i * 110);
+		put_img(game, game->player.player_right1, j * 110, i * 110);
 }
 
 void	put_player(t_game *game, int i, int j, char c)
