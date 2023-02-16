@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:50 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/15 20:36:26 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:18:18 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,21 +96,18 @@ typedef struct s_game
 
 int		key_hooks(int keycode, t_game *game);
 int		red_cross(t_game *game);
-void	player_xpm(t_game *game);
-void	map_xpm(t_game *game);
+void	all_xpm(t_game *game);
 void	print_steps(t_game *game);
 void    read_map(t_game *game, char *file);
 void	check_map(t_game *game);
-void	write_map_init(t_game *game);
-void	write_map_w(t_game *game);
-void	write_map_a(t_game *game);
-void	write_map_s(t_game *game);
-void	write_map_d(t_game *game);
-int map_to_2d(t_game *game);
 int valid_path(t_game *game);
-int valid_collect(t_game *game);
 
-
+void    write_map(t_game *game, char c);
+void put_player(t_game *game, int i, int j, char c);
+void	*init_xpm(t_game *game, char *str);
+void	error_found(char *str);
+void	win_game(t_game *game);
+void	lose_game(t_game *game);
 
 //===SETTINGS 	COLORS===/
 //===Color font code===/

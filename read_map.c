@@ -6,16 +6,80 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:42 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/15 23:31:15 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/16 16:28:25 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    read_map(t_game *game, char *file)
+static void	total_potion(t_game *game)
 {
-	int fd;
-	char *line;
+	int	i;
+
+	game->map.all_potion = 0;
+	i = 0;
+	while (game->map.line[i])
+	{
+		if (game->map.line[i] == 'C')
+			game->map.all_potion++;
+		i++;
+	}
+}
+
+static void	copy_map(t_game *game)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	k = 0;
+	game->map.mtx_cpy = ft_calloc(game->map.height + 1, sizeof(char *));
+	if (!game->map.mtx_cpy)
+		return ;
+	while (i < game->map.height)
+	{
+		game->map.mtx_cpy[i] = ft_calloc(game->map.width + 1, sizeof(char));
+		if (!game->map.mtx_cpy[i])
+			return ;
+		j = 0;
+		while (j < game->map.width)
+		{
+			game->map.mtx_cpy[i][j++] = game->map.line[k++];
+		}
+		i++;
+	}
+}
+
+static void	map_to_2d(t_game *game)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	k = 0;
+	game->map.mtx = ft_calloc(game->map.height + 1, sizeof(char *));
+	if (!game->map.mtx)
+		return ;
+	while (i < game->map.height)
+	{
+		game->map.mtx[i] = ft_calloc(game->map.width + 1, sizeof(char));
+		if (!game->map.mtx[i])
+			return ;
+		j = 0;
+		while (j < game->map.width)
+		{
+			game->map.mtx[i][j++] = game->map.line[k++];
+		}
+		i++;
+	}
+}
+
+void	read_map(t_game *game, char *file)
+{
+	int		fd;
+	char	*line;
 
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
@@ -23,7 +87,6 @@ void    read_map(t_game *game, char *file)
 	game->map.width = ft_strlen(line) - 1;
 	game->map.line = (ft_strdup_no_nl(line));
 	free(line);
-
 	while (line)
 	{
 		line = get_next_line(fd);
@@ -31,7 +94,8 @@ void    read_map(t_game *game, char *file)
 		game->map.height++;
 	}
 	close(fd);
-	//ft_putstr_fd(game->map.line, 1);
 	map_to_2d(game);
+	copy_map(game);
+	total_potion(game);
 	check_map(game);
 }

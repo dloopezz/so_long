@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+         #
+#    By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 13:51:55 by cyacoub-          #+#    #+#              #
-#    Updated: 2023/02/15 20:36:42 by dlopez-s         ###   ########.fr        #
+#    Updated: 2023/02/16 16:06:02 by lopezz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,11 @@ SRC = 	controls.c \
 		init_xpm.c \
 		count_steps.c \
 		read_map.c \
-		errors.c \
+		check_map.c \
 		write_map.c \
 		valid_path.c \
-		valid_collect.c \
-		map_copies.c
+		put_player.c \
+		messages.c
 
 OBJS = $(SRC:.c=.o)
 

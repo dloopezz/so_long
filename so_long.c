@@ -6,67 +6,40 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:44 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/15 23:39:02 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/16 16:26:45 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void total_potion(t_game *game)
+//CLOSE GAME WITH THE RED CROSS  cambiar de archivo
+int	red_cross(t_game *game)
 {
-	int i;
-
-	game->map.all_potion = 0;
-	i = 0;
-	while(game->map.line[i])
-	{
-		if (game->map.line[i] == 'C')
-			game->map.all_potion++;
-		i++;
-	}
-	//ft_putnbr_fd(game->map.all_potion, 1);
+	mlx_destroy_window(game->mlx, game->win);
+	exit (0);
 }
 
-static void init_window(t_game *game, char *file)
-{   
-	read_map(game, file);
-	total_potion(game);
-	game->mlx = mlx_init();
-	if (!(game->mlx))
-		exit(EXIT_FAILURE);
-	game->win = mlx_new_window(game->mlx, game->map.width * 110, game->map.height * 110, "Save Morty!");
-}
-
-static void init_map(t_game *game)
-{
-	game->player.pos = 2; //aqui para que salga jugador al principio
-	map_xpm(game);
-	player_xpm(game); //esta en init map para que en primer write ponga a player
-	write_map_s(game);
-}
-
-static void init_player(t_game *game)
-{
-	//PARA INICIALIZAR LAS VARIABLES
-	game->player.steps = 0;
-	game->map.n_potion = 0; //inicializamos para poder hacer ++
-	//player.steps_flag = 1;
-
-	// player_xpm(game); //antes estaba aqui por lo de init_pos
-	mlx_put_image_to_window(game->mlx, game->win, game->map.footprints, 10, 10); //SALE IMAGEN DE LOS PASOS AL PRINCIPIO
-}
-
-static void    init_game(t_game *game, char *file)
-{
-	init_window(game, file);
-	init_map(game);
-	init_player(game);
-}
-
-static int loop_hook(t_game *game)
+static int	loop_hook(t_game *game)
 {
 	print_steps(game);
 	return (0);
+}
+
+static void	init_game(t_game *game, char *file)
+{
+	game->player.pos = 2;
+	game->player.steps = 0;
+	game->map.n_potion = 0;
+	//player.steps_flag = 1;
+	read_map(game, file);
+	game->mlx = mlx_init();
+	if (!(game->mlx))
+		exit(EXIT_FAILURE);
+	game->win = mlx_new_window(game->mlx, game->map.width * 110,
+			game->map.height * 110, "Save Morty!");
+	all_xpm(game);
+	write_map(game, 's');
+	mlx_put_image_to_window(game->mlx, game->win, game->map.footprints, 10, 10);
 }
 
 /* void    ft_leaks()
@@ -74,7 +47,7 @@ static int loop_hook(t_game *game)
 	system("leaks so_long");
 } */
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_game	game;
 
