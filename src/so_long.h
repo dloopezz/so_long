@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:50 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/16 20:09:25 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/18 15:00:13 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-//KEYCODES
 # define KEY_ESC		53
 # define KEY_W			13
 # define KEY_A			0
@@ -31,14 +30,11 @@
 # define ARROW_LEFT		123
 # define ARROW_RIGHT	124
 
-//EVENT CODES
 # define DESTROY_NOTIFY	7
-
-//GAME MACROS
-# define PLAYER			110
 # define XPM_ROUTE		"./xpm/"
 
-//STRUCTS USED IN  THE GAME
+
+//STRUCTS USED IN THE GAME
 typedef struct s_player
 {
 	int		steps;
@@ -71,6 +67,7 @@ typedef struct s_map
 	int		width;
 	void	*cell;
 	void	*box;
+	void	*metalbox;
 	void	*potion;
 	void	*portal;
 	void	*spike;

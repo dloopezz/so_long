@@ -6,13 +6,12 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:44 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/16 17:41:15 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/17 15:01:12 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-//CLOSE GAME WITH THE RED CROSS  cambiar de archivo
 int	red_cross(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
@@ -44,8 +43,7 @@ static void	init_game(t_game *game, char *file)
 /* void	ft_leaks()
 {
 	system("leaks so_long");
-}
-*/
+} */
 
 int	main(int argc, char **argv)
 {

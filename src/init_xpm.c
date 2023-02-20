@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:39 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/16 20:06:27 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/18 15:01:40 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	map_xpm(t_game *game)
 	game->map.cell = init_xpm(game, "cell.xpm");
 	game->map.footprints = init_xpm(game, "footprints.xpm");
 	game->map.box = init_xpm(game, "box.xpm");
+	game->map.metalbox = init_xpm(game, "metalbox.xpm");
 	game->map.potion = init_xpm(game, "potion.xpm");
 	game->map.portal = init_xpm(game, "portal.xpm");
 	game->map.spike = init_xpm(game, "spike.xpm");
