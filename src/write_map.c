@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:47:04 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/18 15:00:42 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/20 14:43:09 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	put_elems(t_game *game, int i, int j, int k)
 		if (game->map.n_potion == game->map.all_potion)
 			put_img(game, game->map.portal, j * 110, i * 110);
 		else
-			put_img(game, game->map.metalbox, j * 110, i * 110);
+			put_img(game, game->map.box, j * 110, i * 110);
 	}
 	else if (game->map.line[k] == 'C')
 		put_img(game, game->map.potion, j * 110, i * 110);

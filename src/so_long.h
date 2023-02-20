@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:50 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/18 15:00:13 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/20 14:56:47 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 
 # define DESTROY_NOTIFY	7
 # define XPM_ROUTE		"./xpm/"
-
 
 //STRUCTS USED IN THE GAME
 typedef struct s_player
@@ -67,7 +66,6 @@ typedef struct s_map
 	int		width;
 	void	*cell;
 	void	*box;
-	void	*metalbox;
 	void	*potion;
 	void	*portal;
 	void	*spike;

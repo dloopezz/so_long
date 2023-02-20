@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:42 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/16 17:33:05 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/20 14:56:59 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,28 @@ static void	map_to_2d(t_game *game)
 	}
 }
 
+static void	check_ext(char *file, char *ext)
+{
+	int	i;
+	int	j;
+
+	i = ft_strlen(file) - ft_strlen(ext);
+	j = 0;
+	while (file[i + j] && ext[j])
+	{
+		if (file[i + j] == ext[j])
+			j++;
+		else
+			error_found("Map file extension is not '.ber'");
+	}
+}
+
 void	read_map(t_game *game, char *file)
 {
 	int		fd;
 	char	*line;
 
+	check_ext(file, ".ber");
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	game->map.height = 0;
