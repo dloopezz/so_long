@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:42 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/20 14:56:59 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/20 15:06:32 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void	read_map(t_game *game, char *file)
 
 	check_ext(file, ".ber");
 	fd = open(file, O_RDONLY);
+	if (fd <= 0)
+		error_found("Failed to open file");
 	line = get_next_line(fd);
 	game->map.height = 0;
 	game->map.width = ft_strlen(line) - 1;

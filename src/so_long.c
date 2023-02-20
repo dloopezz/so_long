@@ -6,7 +6,7 @@
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:44 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/17 15:01:12 by lopezz           ###   ########.fr       */
+/*   Updated: 2023/02/20 15:03:22 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ static void	init_game(t_game *game, char *file)
 	read_map(game, file);
 	game->mlx = mlx_init();
 	if (!(game->mlx))
-		exit(EXIT_FAILURE);
+		error_found("Failed to load MLX");
 	game->win = mlx_new_window(game->mlx, game->map.width * 110,
 			game->map.height * 110, "Save Morty!");
+	if (!(game->win))
+		error_found("Failed to load window");
 	all_xpm(game);
 	write_map(game, 's');
 	put_img(game, game->map.footprints, 10, 10);
