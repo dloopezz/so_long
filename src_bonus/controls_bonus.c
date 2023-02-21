@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   controls.c                                         :+:      :+:    :+:   */
+/*   controls_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:23 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/21 14:32:43 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:31:33 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	w_press(t_game *game)
 {
@@ -27,6 +27,8 @@ static void	w_press(t_game *game)
 	if (game->map.line[i - game->map.width] == 'E'
 		&& game->map.n_potion == game->map.all_potion)
 		win_game(game);
+	if (game->map.line[i - game->map.width] == 'S')
+		lose_game(game);
 	if (game->map.line[i - game->map.width] != '1'
 		&& game->map.line[i - game->map.width] != 'E')
 	{
@@ -53,6 +55,8 @@ static void	s_press(t_game *game)
 	if (game->map.line[i + game->map.width] == 'E'
 		&& game->map.n_potion == game->map.all_potion)
 		win_game(game);
+	if (game->map.line[i + game->map.width] == 'S')
+		lose_game(game);
 	if (game->map.line[i + game->map.width] != '1'
 		&& game->map.line[i + game->map.width] != 'E')
 	{
@@ -79,6 +83,8 @@ static void	a_press(t_game *game)
 	if (game->map.line[i - 1] == 'E'
 		&& game->map.n_potion == game->map.all_potion)
 		win_game(game);
+	if (game->map.line[i - 1] == 'S')
+		lose_game(game);
 	if (game->map.line[i - 1] != '1' && game->map.line[i - 1] != 'E')
 	{
 		game->map.line[i] = '0';
@@ -104,6 +110,8 @@ static void	d_press(t_game *game)
 	if (game->map.line[i + 1] == 'E'
 		&& game->map.n_potion == game->map.all_potion)
 		win_game(game);
+	if (game->map.line[i + 1] == 'S')
+		lose_game(game);
 	if (game->map.line[i + 1] != '1' && game->map.line[i + 1] != 'E')
 	{
 		game->map.line[i] = '0';
@@ -116,6 +124,7 @@ static void	d_press(t_game *game)
 
 int	key_hooks(int keycode, t_game *game)
 {
+	game->frames = -1;
 	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_window(game->mlx, game->win);
@@ -129,6 +138,9 @@ int	key_hooks(int keycode, t_game *game)
 		s_press(game);
 	if (keycode == KEY_D || keycode == ARROW_RIGHT)
 		d_press(game);
+	if (game->player.pos >= 2)
+		game->player.pos = 0;
+	game->player.pos++;
 	mlx_put_image_to_window(game->mlx, game->win, game->map.footprints, 10, 10);
 	return (0);
 }

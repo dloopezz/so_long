@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:36 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/21 15:49:05 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:48:58 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	check_elems(char *line)
 {
@@ -44,7 +44,7 @@ static void	check_unrecognized(char *line)
 	while (line[i])
 	{
 		if (line[i] != 'E' && line[i] != 'C' && line[i] != 'P'
-			&& line[i] != '0' && line[i] != '1')
+			&& line[i] != '0' && line[i] != '1' && line[i] != 'S')
 			error_found("Found unrecognized elements\n");
 		i++;
 	}

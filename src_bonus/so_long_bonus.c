@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:44 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/21 15:41:32 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:49:25 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	red_cross(t_game *game)
 {
@@ -26,6 +26,7 @@ static int	loop_hook(t_game *game)
 
 static void	init_game(t_game *game, char *file)
 {
+	game->player.pos = 2;
 	game->player.steps = 0;
 	game->map.n_potion = 0;
 	read_map(game, file);

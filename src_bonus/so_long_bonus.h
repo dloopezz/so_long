@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:50 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/21 14:41:02 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:31:01 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
@@ -40,13 +40,21 @@ typedef struct s_player
 	int		steps_flag;
 	int		pos;
 	void	*player_front;
+	void	*player_front1;
 	void	*player_back;
+	void	*player_back1;
 	void	*player_right;
+	void	*player_right1;
 	void	*player_left;
+	void	*player_left1;
 	void	*human_front;
+	void	*human_front1;
 	void	*human_back;
+	void	*human_back1;
 	void	*human_right;
+	void	*human_right1;
 	void	*human_left;
+	void	*human_left1;
 }				t_player;
 
 typedef struct s_map
@@ -60,6 +68,7 @@ typedef struct s_map
 	void	*box;
 	void	*potion;
 	void	*portal;
+	void	*spike;
 	void	*footprints;
 	int		all_potion;
 	int		n_potion;
@@ -69,6 +78,7 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
+	int			frames;
 	int			img_height;
 	int			img_width;
 	t_player	player;
