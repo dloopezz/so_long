@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:50 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/21 15:31:01 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/21 18:39:53 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define ARROW_LEFT		123
 # define ARROW_RIGHT	124
 
-# define DESTROY_NOTIFY	7
+# define DESTROY_NOTIFY	17
 # define XPM_ROUTE		"./xpm/"
 
 //STRUCTS USED IN THE GAME
