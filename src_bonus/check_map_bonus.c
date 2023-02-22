@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:36 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/21 15:48:58 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:10:17 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static void	check_elems(char *line)
 	while (line[i++])
 	{
 		if (line[i] == 'E')
-			e = 1;
+			e++;
 		if (line[i] == 'C')
 			c = 1;
 		if (line[i] == 'P')
-			p = 1;
+			p++;
 	}
 	if (e != 1 || c != 1 || p != 1)
-		error_found("Missing elements\n");
+		error_found("Invalid elements\n");
 }
 
 static void	check_unrecognized(char *line)
