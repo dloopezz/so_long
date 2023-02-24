@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:42 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/24 12:50:05 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:28:13 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	read_map(t_game *game, char *file)
 		error_found("Failed to open file");
 	line = get_next_line(fd);
 	if (!line)
-		error_found("Unable to read map");
+		error_found("Empty map");
 	game->map.height = 0;
 	game->map.width = ft_strlen(line) - 1;
 	game->map.line = (ft_strdup_no_nl(line));
