@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:36 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/22 17:09:57 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:45:45 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,6 @@ static void	check_unrecognized(char *line)
 	}
 }
 
-static void	check_format(char *line, t_game *game)
-{
-	if (game->map.width * game->map.height != ft_strlen(line))
-		error_found("Map is not rectangular\n");
-}
-
 static void	check_walls(char *line, t_game *game)
 {
 	int	i;
@@ -78,7 +72,6 @@ void	check_map(t_game *game)
 {
 	check_elems(game->map.line);
 	check_unrecognized(game->map.line);
-	check_format(game->map.line, game);
 	check_walls(game->map.line, game);
 	valid_path(game);
 }

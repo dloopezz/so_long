@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:42 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/27 15:41:06 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:56:52 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ static void	check_ext(char *file, char *ext)
 	}
 }
 
+static void	check_rect(t_game *game)
+{
+	if (ft_strlen(game->map.line) % game->map.width != 0)
+		error_found("Map is not rectangular");
+}
+
 void	read_map(t_game *game, char *file)
 {
 	int		fd;
@@ -85,6 +91,7 @@ void	read_map(t_game *game, char *file)
 	{
 		line = get_next_line(fd);
 		game->map.line = ft_strjoin_no_nl(game->map.line, line);
+		check_rect(game);
 		game->map.height++;
 	}
 	close(fd);

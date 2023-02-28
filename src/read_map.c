@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:42 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/27 15:32:59 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:55:12 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	copy_map(t_game *game)
 	int	i;
 	int	j;
 	int	k;
+	int	len;
 
 	i = 0;
 	k = 0;
@@ -39,7 +40,8 @@ static void	copy_map(t_game *game)
 		return ;
 	while (i < game->map.height)
 	{
-		game->map.cpy[i] = ft_calloc(game->map.width + 1, sizeof(char));
+		len = ft_strlen(game->map.cpy[i]) + 1;
+		game->map.cpy[i] = ft_calloc(len + 1, sizeof(char));
 		if (!game->map.cpy[i])
 			return ;
 		j = 0;
@@ -67,6 +69,12 @@ static void	check_ext(char *file, char *ext)
 	}
 }
 
+static void	check_rect(t_game *game)
+{
+	if (ft_strlen(game->map.line) % game->map.width != 0)
+		error_found("Map is not rectangular");
+}
+
 void	read_map(t_game *game, char *file)
 {
 	int		fd;
@@ -87,6 +95,7 @@ void	read_map(t_game *game, char *file)
 	{
 		line = get_next_line(fd);
 		game->map.line = ft_strjoin_no_nl(game->map.line, line);
+		check_rect(game);
 		game->map.height++;
 	}
 	close(fd);
