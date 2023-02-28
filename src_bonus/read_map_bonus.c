@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:42 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/28 16:56:52 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:23:43 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	copy_map(t_game *game)
 	int	i;
 	int	j;
 	int	k;
+	int	len;
 
 	i = 0;
 	k = 0;
@@ -39,7 +40,8 @@ static void	copy_map(t_game *game)
 		return ;
 	while (i < game->map.height)
 	{
-		game->map.cpy[i] = ft_calloc(game->map.width + 1, sizeof(char));
+		len = ft_strlen(game->map.cpy[i]) + 1;
+		game->map.cpy[i] = ft_calloc(len, sizeof(char));
 		if (!game->map.cpy[i])
 			return ;
 		j = 0;
