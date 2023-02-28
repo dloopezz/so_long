@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:42 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/24 13:28:03 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:32:59 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,6 @@ static void	copy_map(t_game *game)
 	}
 }
 
-static void	map_to_2d(t_game *game)
-{
-	int	i;
-	int	j;
-	int	k;
-
-	i = 0;
-	k = 0;
-	game->map.mtx = ft_calloc(game->map.height + 1, sizeof(char *));
-	if (!game->map.mtx)
-		return ;
-	while (i < game->map.height)
-	{
-		game->map.mtx[i] = ft_calloc(game->map.width + 1, sizeof(char));
-		if (!game->map.mtx[i])
-			return ;
-		j = 0;
-		while (j < game->map.width)
-		{
-			game->map.mtx[i][j++] = game->map.line[k++];
-		}
-		i++;
-	}
-}
-
 static void	check_ext(char *file, char *ext)
 {
 	int	i;
@@ -115,7 +90,6 @@ void	read_map(t_game *game, char *file)
 		game->map.height++;
 	}
 	close(fd);
-	map_to_2d(game);
 	copy_map(game);
 	total_potion(game);
 	check_map(game);

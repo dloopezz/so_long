@@ -6,7 +6,7 @@
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:46:50 by dlopez-s          #+#    #+#             */
-/*   Updated: 2023/02/21 18:39:49 by dlopez-s         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:33:11 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_player
 typedef struct s_map
 {
 	char	*line;
-	char	**mtx;
 	char	**cpy;
 	int		height;
 	int		width;
