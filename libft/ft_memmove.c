@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 17:18:42 by cyacoub-          #+#    #+#             */
-/*   Updated: 2022/09/27 15:42:45 by cyacoub-         ###   ########.fr       */
+/*   Created: 2022/09/14 14:27:41 by lopezz            #+#    #+#             */
+/*   Updated: 2022/09/27 19:01:59 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,24 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char		*d;
-	unsigned const char	*s;
-
 	if (dest == 0 && src == 0)
-		return (NULL);
+		return (0);
 	if (dest < src)
 		return (ft_memcpy(dest, src, n));
-	d = (unsigned char *)dest;
-	s = (unsigned const char *)src;
 	while (n--)
-		d[n] = s[n];
+		((unsigned char *)dest)[n] = ((unsigned const char *)src)[n];
 	return (dest);
 }
+
+/*
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	char dest[] = "abc";
+	char src[] = "cbe";
+	ft_memmove(dest, src, 3);
+	printf("%s", dest);
+	return (0);
+}*/

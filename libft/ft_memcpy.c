@@ -3,60 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 16:26:34 by cyacoub-          #+#    #+#             */
-/*   Updated: 2022/09/27 15:41:27 by cyacoub-         ###   ########.fr       */
+/*   Created: 2022/09/14 13:40:42 by lopezz            #+#    #+#             */
+/*   Updated: 2022/09/27 18:58:00 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
+	size_t				i;
 
 	i = 0;
-	if (src == 0 && dest == 0)
-		return (NULL);
+	if (dst == 0 && src == 0)
+		return (0);
 	while (i < n)
 	{
-		((char *)dest)[i] = ((char *)src)[i];
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
-	return (dest);
+	return (dst);
 }
+
 /*
-#include <stdlib.h>
-#include <unistd.h>
+#include <stdio.h>
 #include <string.h>
 
-int		main(int argc, const char *argv[])
+int main()
 {
-	void	*mem;
-	int		arg;
-
-	alarm(5);
-	if (!(mem = malloc(sizeof(*mem) * 30)) || argc == 1)
-		return (0);
-	memset(mem, 'j', 30);
-	if ((arg = atoi(argv[1])) == 1)
-	{
-		if (mem != ft_memcpy(mem, "zyxwvutsrqponmlkjihgfedcba", 14))
-			write(1, "dest's adress was not returned\n", 31);
-		write(1, mem, 30);
-	}
-	else if (arg == 2)
-	{
-		if (mem != ft_memcpy(mem, "zyxwvutst", 0))
-			write(1, "dest's adress was not returned\n", 31);
-		write(1, mem, 30);
-	}
-	else if (arg == 3)
-	{
-		if (mem != ft_memcpy(mem, "zy\0xw\0vu\0\0tsr", 11))
-			write(1, "dest's adress was not returned\n", 31);
-		write(1, mem, 30);
-	}
+	//char src[] = "abcde";
+	//ft_memcpy(src, src, 3);
+	
+	printf("%s", ft_memcpy(((void *)0), ((void *)0), 3));
 	return (0);
-}*/
+}
+*/

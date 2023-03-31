@@ -3,51 +3,141 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 16:55:55 by cyacoub-          #+#    #+#             */
-/*   Updated: 2022/09/27 16:18:57 by cyacoub-         ###   ########.fr       */
+/*   Created: 2022/09/20 21:59:01 by lopezz            #+#    #+#             */
+/*   Updated: 2022/09/29 19:53:16 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static int	isinset(char const *set, char c)
+static int	ft_inicio(const char *s1, const char *set)
 {
-	while (*set)
+	size_t	i;
+	size_t	len;
+	int		flag;
+
+	len = ft_strlen(s1);
+	i = 0;
+	flag = -1;
+	while (i < len && flag < 0)
 	{
-		if (*set == c)
-			return (1);
-		set++;
+		if (ft_strchr(set, s1[i]) == 0)
+		{
+			flag = 0;
+			i--;
+		}
+		i++;
 	}
-	return (0);
+	return (i);
+}
+
+static int	ft_final(const char *s1, const char *set)
+{
+	size_t	i;
+	size_t	len;
+	int		flag;
+
+	len = ft_strlen(s1);
+	i = 0;
+	flag = -1;
+	while (i < len && flag < 0)
+	{
+		if (ft_strchr(set, s1[len - 1 - i]) == 0)
+		{
+			flag = 0;
+			i--;
+		}
+		i++;
+	}
+	return (len - i);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		len;
-	char	*ptr;
+	int		inicio;
+	int		final;
+	char	*str;
 
-	if (s1 && set)
-	{
-		while (*s1)
-		{
-			if (isinset(set, *s1) == 1)
-				s1++;
-			else
-				break ;
-		}
-		len = ft_strlen(s1);
-		while ((len > 0) && *(s1 + len - 1))
-		{
-			if (isinset(set, *(s1 + len - 1)))
-				len--;
-			else
-				break ;
-		}
-		ptr = ft_substr(s1, 0, len);
-		return (ptr);
-	}
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
+	inicio = ft_inicio(s1, set);
+	final = ft_final(s1, set);
+	if (inicio >= final)
+		return (ft_strdup(""));
+	str = (char *)malloc((final - inicio + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s1 + inicio, final - inicio + 1);
+	return (str);
+}
+
+/* 
+#include <stdio.h>
+
+int main()
+{
+	char s1[] = "   Hola que tal   ";
+	char set[] = "que tal";
+	
+	printf("%s", ft_strtrim(s1, set));
 	return (0);
 }
+
+FUNCIÓN ORIGINAL CON BREAK:
+static int	ft_inicio(const char *s1, const char *set)
+{
+	size_t	i;
+	size_t	len;
+
+	len = ft_strlen(s1);
+	i = 0;
+	while (i < len)
+	{
+		if (ft_strchr(set, s1[i]) == 0)
+			break ;
+		i++;
+	}
+	return (i);
+}
+
+static int	ft_final(const char *s1, const char *set)
+{
+	size_t	i;
+	size_t	len;
+
+	len = ft_strlen(s1);
+	i = 0;
+	while (i < len)
+	{
+		if (ft_strchr(set, s1[len - 1 - i]) == 0)
+			break ;
+		i++;
+	}
+	return (len - i);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	int		inicio;
+	int		final;
+	char	*str;
+
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
+	inicio = ft_inicio(s1, set);
+	final = ft_final(s1, set);
+	if (inicio >= final)
+		return (ft_strdup(""));
+	str = (char *)malloc((final - inicio + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s1 + inicio, final - inicio + 1);
+	return (str);
+}
+*/

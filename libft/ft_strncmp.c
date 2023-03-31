@@ -3,39 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 19:07:49 by cyacoub-          #+#    #+#             */
-/*   Updated: 2022/09/16 16:06:37 by cyacoub-         ###   ########.fr       */
+/*   Created: 2022/09/16 12:50:26 by dlopez-s          #+#    #+#             */
+/*   Updated: 2022/09/29 18:41:26 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
 #include "libft.h"
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned int	diff;
 
 	i = 0;
-	while (str1[i] != '\0' && str2[i] != '\0' && i < n)
+	diff = 0;
+	while ((s1[i] != '\0') && (s2[i] != '\0') && (i < n) && (diff == 0))
 	{
-		if (str1[i] != str2[i])
-			return ((unsigned char) str1[i] - (unsigned char) str2[i]);
+		diff = (unsigned char)s1[i] - (unsigned char)s2[i];
 		i++;
 	}
-	if (i != n)
-		return ((unsigned char) str1[i] - (unsigned char) str2[i]);
-	return (0);
+	if (i < n && (diff == 0))
+	{
+		diff = (unsigned char)s1[i] - (unsigned char)s2[i];
+	}
+	return (diff);
 }
 
-/*int main(void)
+/*
+#include <string.h>
+#include <stdio.h>
+
+int	main()
 {
-	char    str1[] = "secta 42";
-	char    str2[] = "secta";
-	printf("%d\n", ft_strncmp(str1, str2, 10));
-}*/
+	printf("%d", ft_strncmp("test\200", "test\0", 6));
+}
+*/
 /*
 #include <stdlib.h>
 #include <unistd.h>
@@ -81,4 +85,5 @@ int		main(int argc, const char *argv[])
 	else if (arg == 11)
 		ft_print_result(ft_strncmp("test\200", "test\0", 6));
 	return (0);
-}*/
+}
+*/

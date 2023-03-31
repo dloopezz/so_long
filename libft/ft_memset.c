@@ -3,34 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 16:30:46 by cyacoub-          #+#    #+#             */
-/*   Updated: 2022/09/15 17:06:46 by cyacoub-         ###   ########.fr       */
+/*   Created: 2022/09/13 13:43:12 by dlopez-s          #+#    #+#             */
+/*   Updated: 2022/09/27 18:48:09 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
 
-void	*ft_memset(void *b, int c, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			i;
-	unsigned char	*str;
 
 	i = 0;
-	str = b;
-	while (i < n)
+	while (i < len)
 	{
-		str[i] = (unsigned char) c;
+		((char *)b)[i] = (unsigned char)c;
 		i++;
 	}
 	return (b);
 }
-/*int	main()
+
+/*
+#include <stdio.h>
+#include <string.h>
+
+int main()
 {
-	int	n = 5;
-	char	str[] = "42 madrid es una secta en la que te gustará entrar";
-	ft_memset(str + 5, '.', n*sizeof(char));
-	printf ("%s", str);
-}*/
+	char str[] = "Hola que tal";
+	
+	ft_memset(str + 5, '.', 3);
+	printf("%s", str);
+	return (0);
+}
+*/

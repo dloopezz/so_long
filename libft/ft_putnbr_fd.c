@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 16:28:26 by cyacoub-          #+#    #+#             */
-/*   Updated: 2022/09/20 16:38:33 by cyacoub-         ###   ########.fr       */
+/*   Created: 2022/09/22 22:09:15 by lopezz            #+#    #+#             */
+/*   Updated: 2022/09/23 12:20:59 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,51 +18,18 @@ void	ft_putnbr_fd(int n, int fd)
 	{
 		ft_putchar_fd('-', fd);
 		ft_putchar_fd('2', fd);
-		ft_putnbr_fd(147483648, fd);
+		n = 147483648;
 	}
-	else if (n < 0)
+	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(-n, fd);
+		n = -n;
 	}
-	else if (n > 9)
+	if (n >= 10)
 	{
-		ft_putnbr_fd((n / 10), fd);
-		ft_putnbr_fd((n % 10), fd);
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
 	}
 	else
-	{
-		ft_putchar_fd((n + '0'), fd);
-	}
+		ft_putchar_fd(n + 48, fd);
 }
-/*
-#include <stdlib.h>
-#include <unistd.h>
-
-int		main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		ft_putnbr_fd(0, 2);
-	else if (arg == 2)
-		ft_putnbr_fd(5, 1);
-	else if (arg == 3)
-		ft_putnbr_fd(-5, 2);
-	else if (arg == 4)
-		ft_putnbr_fd(42, 1);
-	else if (arg == 5)
-		ft_putnbr_fd(-57, 2);
-	else if (arg == 6)
-		ft_putnbr_fd(164189, 1);
-	else if (arg == 7)
-		ft_putnbr_fd(-987441, 2);
-	else if (arg == 8)
-		ft_putnbr_fd(2147483647, 1);
-	else if (arg == 9)
-		ft_putnbr_fd(-2147483648LL, 2);
-	return (0);
-}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 12:41:33 by cyacoub-          #+#    #+#             */
-/*   Updated: 2022/09/16 16:25:10 by cyacoub-         ###   ########.fr       */
+/*   Created: 2022/09/14 13:20:04 by lopezz            #+#    #+#             */
+/*   Updated: 2022/09/14 17:52:19 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,26 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, n);
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = 0;
+		i++;
+	}
 }
+
 /*
-#include <stdlib.h>
-#include <unistd.h>
+#include <stdio.h>
 #include <string.h>
 
-int		main(int argc, const char *argv[])
+int main()
 {
-	void	*mem;
-
-	alarm(5);
-	if (argc == 1 || !(mem = malloc(sizeof(*mem) * 5)))
-		return (0);
-	if (atoi(argv[1]) == 1)
-	{
-		memset(mem, 'e', 5);
-		ft_bzero(mem, 5);
-		write(1, mem, 5);
-	}
-	else if (atoi(argv[1]) == 2)
-	{
-		memset(mem, 'e', 5);
-		ft_bzero(mem, 0);
-		write(1, mem, 5);
-	}
+	char str[] = "Hola que tal";
+	
+	ft_bzero(str + 5, 3);
+	printf("%s", str);
 	return (0);
-}*/
+}
+*/

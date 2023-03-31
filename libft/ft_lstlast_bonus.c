@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_no_nl.c                                  :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lopezz <lopezz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 14:33:00 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/02/16 20:54:37 by lopezz           ###   ########.fr       */
+/*   Created: 2022/09/26 17:01:11 by dlopez-s          #+#    #+#             */
+/*   Updated: 2022/09/26 20:58:51 by lopezz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup_no_nl(char *s)
+t_list	*ft_lstlast(t_list *lst)
 {
-	char	*new_mem;
-	int		size;
-	int		i;
-
-	new_mem = NULL;
-	size = ft_strlen(s);
-	i = 0;
-	new_mem = malloc(size + 1);
-	if (!(new_mem))
-		return (NULL);
-	while (s[i] && s[i] != '\n')
+	if (!lst)
+		return (0);
+	while (lst -> next)
 	{
-		new_mem[i] = s[i];
-		i++;
+		lst = lst -> next;
 	}
-	new_mem[i] = '\0';
-	return (new_mem);
+	return (lst);
 }
