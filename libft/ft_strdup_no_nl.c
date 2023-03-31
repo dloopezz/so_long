@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup_no_nl.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlopez-s <dlopez-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 18:55:02 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/02/06 13:16:11 by dlopez-s         ###   ########.fr       */
+/*   Created: 2023/03/31 15:22:31 by dlopez-s          #+#    #+#             */
+/*   Updated: 2023/03/31 15:22:34 by dlopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
 
-int	ft_strlen(const char *str)
+char	*ft_strdup_no_nl(char *s)
 {
-	int	i;
+	char	*new_mem;
+	int		size;
+	int		i;
 
+	new_mem = NULL;
+	size = ft_strlen(s);
 	i = 0;
-	if (str == 0)
-		return (0);
-	while (str[i] != '\0')
+	new_mem = malloc(size + 1);
+	if (!(new_mem))
+		return (NULL);
+	while (s[i] && s[i] != '\n')
+	{
+		new_mem[i] = s[i];
 		i++;
-	return (i);
+	}
+	new_mem[i] = '\0';
+	return (new_mem);
 }
-/*int main(void)
-{
-	char    str[] = "Hola mundo";
-	printf("la longitud es = %ld\n", ft_strlen(str));
-}*/
